@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="accordion.css">
     <link rel="stylesheet" href="achievements.css">
     <link rel="stylesheet" href="footer.css">
+    <!-- Միացնում ենք Font Awesome պատկերակների գրադարանը լոգոների համար -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+
 </head>
 
 <body>
@@ -32,7 +35,12 @@
                 </a>
             </div>
 
-            <!-- Աջ կողմի մենյուն (Այստեղ ID-ները հարմարեցված են ձեր սեկցիաներին) -->
+            <!-- ՄԵՋՏԵՂԻ ՀԱՏՎԱԾ: Գրանցման կոճակ (երևում է համակարգչի և հեռախոսի վրա) -->
+            <div class="nav-auth">
+                <a href="#register" class="btn-register">Գրանցվել</a>
+            </div>
+
+            <!-- Աջ կողմի մենյուն -->
             <ul class="nav-links">
                 <li><a href="#hero">Հիմնական հատված</a></li>
                 <li><a href="#tours-carousel">Մեր տուրերը</a></li>
@@ -42,7 +50,7 @@
                 <li><a href="#footer">Կապ մեզ հետ</a></li>
             </ul>
 
-            <!-- Հեռախոսի Բուրգեր Մենյու -->
+            <!-- Հեռախոսի Բուրգեր Մենյու (3 գծիկներով) -->
             <div class="burger-menu" id="burger-toggle">
                 <span class="line"></span>
                 <span class="line"></span>
@@ -175,54 +183,90 @@
 
     <!-- РАЗДЕЛ 5: Достижения -->
     <section class="achievements-section" id="achievements">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number" data-target="15000">0</div>
-                    <div class="stat-label">Զբոսաշրջիկներ</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-target="350">0</div>
-                    <div class="stat-label">Տուրեր</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-target="10">0</div>
-                    <div class="stat-label">Տարի շուկայում</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-target="5" data-decimal="1">0.0</div>
-                    <div class="stat-label">Վարկանիշ</div>
-                </div>
+
+        <!-- ԺԱՄԱՆԱԿԱԿԻՑ ՎԵՐՆԱԳԻՐ (Ավելացրեք սա թվերից վերև) -->
+        <div class="section-header">
+            <span class="subtitle">Ինչու ընտրել մեզ</span>
+            <h2 class="main-title">Մեր առավելությունները</h2>
+            <div class="title-devider"></div>
+        </div>
+
+        <!-- Ձեր թվերի բլոկի օրինակը (կառուցվածքը թողեք ձերը, միայն ստուգեք data-target-ը) -->
+        <div class="achievements-container">
+            <div class="achievement-card">
+                <span class="counter" data-target="1500">0</span>
+                <p>Գոհ Հաճախորդներ</p>
+            </div>
+            <div class="achievement-card">
+                <span class="counter" data-target="250">0</span>
+                <p>Հաջողված Տուրեր</p>
+            </div>
+            <div class="achievement-card">
+                <span class="counter" data-target="15">0</span>
+                <p>Տարիների Փորձ</p>
             </div>
         </div>
     </section>
 
-    <!-- РАЗДЕЛ 6: Футер -->
+
+    <!-- РАЗДЕЛ 6: Футер (Կապ մեզ հետ) -->
     <footer class="footer" id="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>Հայաստանի Տուրեր</h3>
-                    <p>Բացահայտիր անսահման գեղեցկությունը մեզ հետ։</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Արագ հղումներ</h4>
-                    <ul>
-                        <li><a href="#hero">Գլխավոր</a></li>
-                        <li><a href="#tours-carousel">Տուրեր</a></li>
-                        <li><a href="#achievements">Մեր Մասին</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contacts">
-                    <h4>Կապ մեզ հետ</h4>
-                    <p>Երևան, Հայաստան</p>
-                    <p>info@armeniadiscovertours.com</p>
-                    <p>+374 99 00 00 00</p>
+        <div class="footer-container">
+
+            <!-- Սյունակ 1: Լոգո և Նկարագրություն -->
+            <div class="footer-column footer-about">
+                <img src="images.jpg" alt="Logo" class="footer-logo">
+                <p>Բացահայտեք աշխարհի ամենագեղեցիկ անկյունները մեր պրոֆեսիոնալ թիմի և հարմարավետ տուրերի միջոցով։ Your
+                    trust is our priority.</p>
+            </div>
+
+            <!-- Սյունակ 2: Արագ Հղումներ -->
+            <div class="footer-column">
+                <h3>Արագ հղումներ</h3>
+                <ul class="footer-links">
+                    <li><a href="#hero">Հիմնական հատված</a></li>
+                    <li><a href="#tours-carousel">Մեր տուրերը</a></li>
+                    <li><a href="#tour-details">Տուրերի մասին</a></li>
+                    <li><a href="#achievements">Մեր առավելությունները</a></li>
+                </ul>
+            </div>
+
+            <!-- Սյունակ 3: Ուղղություններ -->
+            <div class="footer-column">
+                <h3>Ուղղություններ</h3>
+                <ul class="footer-links">
+                    <li><a href="#tours-carousel">Խմբակային տուրեր</a></li>
+                    <li><a href="#tours-carousel">Անհատական ուղևորություններ</a></li>
+                    <li><a href="#tours-carousel">VIP տրանսֆերներ</a></li>
+                    <li><a href="#drivers">Մեր վարորդները</a></li>
+                </ul>
+            </div>
+
+            <!-- Սյունակ 4: Կապ և Ինտերակտիվ Չատեր -->
+            <div class="footer-column footer-contact">
+                <h3>Կապ մեզ հետ</h3>
+                <p class="phone-display">📞 <span>Հեռախոս:</span> <a href="tel:+37477064617">+374 77 064617</a></p>
+                <p>✉️ <span>Էլ. հասցե:</span> info@tourproject.am</p>
+                <p>📍 <span>Հասցե:</span> Երևան, Հայաստան</p>
+
+                <!-- ԳԵՂԵՑԻԿ ԼՈԳՈՆԵՐԸ ԻՍԿԱԿԱՆ ՉԱՏԵՐԻ ՀՂՈՒՄՆԵՐՈՎ -->
+                <div class="chat-actions">
+                    <!-- WhatsApp Չատի Հղում -->
+                    <a href="https://wa.me" target="_blank" class="chat-btn whatsapp" aria-label="Write on WhatsApp">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <!-- Telegram Չատի Հղում -->
+                    <a href="https://t.me" target="_blank" class="chat-btn telegram" aria-label="Write on Telegram">
+                        <i class="fab fa-telegram-plane"></i> Telegram
+                    </a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Հայաստանի Տուրեր. Բոլոր իրավունքները պաշտպանված են:</p>
-            </div>
+
+        </div>
+
+        <!-- Հեղինակային իրավունքներ -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 Tour Project. Բոլոր իրավունքները պաշտպանված են։</p>
         </div>
     </footer>
 
