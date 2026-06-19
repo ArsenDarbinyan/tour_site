@@ -32,73 +32,101 @@
     border-color: var(--emerald-mid);
 }
 
+/* Контейнер карусели */
 .carousel-container {
     width: 100%;
-    overflow: hidden;
+    overflow: hidden; /* Скрываем всё, что вылазит за края экрана */
     padding: 20px 0;
     position: relative;
 }
 
+/* Оставляем градиенты по бокам, чтобы карточки красиво появлялись из пустоты */
 .carousel-container::before,
 .carousel-container::after {
     content: '';
     position: absolute;
     top: 0; bottom: 0;
-    width: 50px;
+    width: 60px;
     z-index: 2;
     pointer-events: none;
 }
-
 .carousel-container::before {
     left: 0;
-    background: linear-gradient(to right, var(--bg-light) 0%, transparent 100%);
+    /* background: linear-gradient(to right, var(--bg-light) 0%, transparent 100%); */
 }
-
 .carousel-container::after {
     right: 0;
-    background: linear-gradient(to left, var(--bg-light) 0%, transparent 100%);
+    /* background: linear-gradient(to left, var(--bg-light) 0%, transparent 100%); */
 }
 
+/* Настраиваем трек */
 .carousel-track {
-    display: flex;
-    gap: 20px;
-    will-change: transform;
+    display: grid;
+    grid-template-rows: repeat(3, auto); /* Строго 3 ряда */
+    grid-auto-flow: column; /* Элементы строятся колонками (вправо) */
+    gap: 15px; /* Отступ между карточками */
+    width: max-content; /* Трек растягивается на всю длину всех карточек */
+    
+    /* ЗАПУСК БЕСКОНЕЧНОГО ДВИЖЕНИЯ */
+    /* 40s - скорость. linear - равномерно. infinite - бесконечно */
+    animation: marquee-scroll 40s linear infinite; 
 }
 
+/* Остановка при наведении (удобно, чтобы успеть кликнуть) */
+.carousel-track:hover {
+    animation-play-state: paused;
+}
+
+/* Сама анимация скролла */
+@keyframes marquee-scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* Сдвигаем ровно на 50% (то есть на длину одного оригинального списка) */
+        transform: translateX(-50%);
+    }
+}
+
+/* Внешний вид карточки */
 .tour-card {
-    flex: 0 0 280px;
+    width: 220px; /* Фиксируем ширину карточки, чтобы сетка не прыгала */
     background: #fff;
-    border-radius: 16px;
+    border-radius: 12px;
     overflow: hidden;
     cursor: pointer;
-    transition: var(--transition-smooth);
+    transition: transform 0.3s var(--ease-sm);
     box-shadow: var(--card-shadow);
-    transform: translateY(0);
 }
 
 .tour-card:hover {
-    transform: translateY(-8px);
+    /* Чтобы карточка не ломала сетку при увеличении, делаем scale */
+    transform: scale(1.03); 
 }
 
+/* Уменьшенные внутренности карточки */
 .tour-card-img {
-    height: 180px;
+    height: 120px;
     background-size: cover;
     background-position: center;
 }
 
 .tour-card-content {
-    padding: 15px;
+    padding: 12px;
 }
 
 .tour-card-title {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     font-weight: 700;
     color: var(--emerald-dark);
     margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .tour-card-price {
     color: var(--emerald-mid);
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
 }

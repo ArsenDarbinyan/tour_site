@@ -71,7 +71,7 @@ export function initToursCarousel() {
     renderCarousel();
 }
 
-function renderCarousel() {
+export function renderCarousel() {
     const track = document.getElementById('carousel-track');
     if (!track) return;
 
@@ -79,22 +79,30 @@ function renderCarousel() {
     if (filteredTours.length === 0) return;
 
     const fragment = document.createDocumentFragment();
-    filteredTours.forEach(tour => {
-        const card = document.createElement('div');
-        card.className = 'tour-card';
-        card.innerHTML = `
-            <div class="tour-card-img" style="background-image: url('${tour.cover}')"></div>
-            <div class="tour-card-content">
-                <h3 class="tour-card-title">${tour.title}</h3>
-                <div class="tour-card-price">${tour.price.toLocaleString('hy-AM')} ֏</div>
-            </div>
-        `;
-        card.addEventListener('click', () => {
-            const event = new CustomEvent('selectTour', { detail: tour });
-            document.dispatchEvent(event);
+
+    // Создаем внутреннюю функцию, чтобы легко вызвать ее дважды
+    const buildCards = () => {
+        filteredTours.forEach(tour => {
+            const card = document.createElement('div');
+            card.className = 'tour-card';
+            card.innerHTML = `
+                <div class="tour-card-img" style="background-image: url('${tour.cover}')"></div>
+                <div class="tour-card-content">
+                    <h3 class="tour-card-title">${tour.title}</h3>
+                    <div class="tour-card-price">${tour.price.toLocaleString('hy-AM')} ֏</div>
+                </div>
+            `;
+            card.addEventListener('click', () => {
+                const event = new CustomEvent('selectTour', { detail: tour });
+                document.dispatchEvent(event);
+            });
+            fragment.appendChild(card);
         });
-        fragment.appendChild(card);
-    });
+    };
+
+    // Вызываем два раза! Это создаст идеальный бесшовный цикл.
+    buildCards();
+    buildCards();
 
     track.appendChild(fragment);
 }
