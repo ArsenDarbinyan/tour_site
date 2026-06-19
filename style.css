@@ -55,6 +55,176 @@ body {
     text-align: center;
 }
 
+/* ================== ՊՐՈՖԵՍԻՈՆԱԼ ԺԱՄԱՆԱԿԱԿԻՑ ՆԱՎԲԱՐ ================== */
+:root {
+    --nav-bg: rgba(255, 255, 255, 0.85); /* Թափանցիկ ֆոն ապակու էֆեկտի համար */
+    --nav-blur: 12px; /* Ապակու լղոզման (blur) էֆեկտ */
+    --text-color: #1d1d1f; /* Apple-ի ստանդարտ մուգ մոխրագույն */
+    --accent-color: #0071e3; /* Պրոֆեսիոնալ կապույտ (Premium Blue) */
+    --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Էջը իջնելիս չի թաքնվի նավբարի հետևում */
+}
+
+/* Գլխավոր կոնտեյներ */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--nav-bg);
+    backdrop-filter: blur(var(--nav-blur));
+    -webkit-backdrop-filter: blur(var(--nav-blur)); /* Safari-ի համար */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    z-index: 9999;
+    transition: var(--transition-smooth);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 16px 24px;
+}
+
+/* Լոգո */
+.logo-img {
+    height: 42px;
+    width: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.03); /* Նուրբ մեծացում լոգոյի վրա մկնիկը պահելիս */
+}
+
+/* Մենյուի հղումները (Desktop) */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: -0.2px;
+    position: relative;
+    padding: 4px 0;
+    transition: var(--transition-smooth);
+}
+
+/* Գեղեցիկ գծիկի անիմացիա հղումների տակ (Hover Line Effect) */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: var(--transition-smooth);
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+.nav-links a:hover::after {
+    width: 100%; /* Գծիկը սահուն բացվում է ձախից աջ */
+}
+
+/* Բուրգեր կոճակը */
+.burger-menu {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+    padding: 4px;
+}
+
+.burger-menu .line {
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-color);
+    border-radius: 4px;
+    transition: var(--transition-smooth);
+}
+
+/* 📱 ԱԴԱՊՏԱՑԻԱ ՀԵՌԱԽՈՍՆԵՐԻ ՀԱՄԱՐ (Mobile & Tablet) */
+@media screen and (max-width: 992px) {
+    .nav-links {
+        gap: 24px; /* Փոքր էկրանների վրա մի փոքր սեղմում ենք տարածությունը */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .burger-menu {
+        display: flex;
+    }
+
+    /* Հեռախոսի փոքր, պրեմիում պատուհանը (Dropdown) */
+    .nav-links {
+        position: absolute;
+        top: calc(100% + 12px);
+        right: 20px;
+        background-color: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        border-radius: 16px; /* Կլորացված ժամանակակից անկյուններ */
+        padding: 24px;
+        flex-direction: column;
+        gap: 20px;
+        width: 260px;
+        text-align: left;
+        
+        /* Հանգիստ վիճակում թաքցրած է */
+        opacity: 0;
+        transform: translateY(-15px) scale(0.95);
+        pointer-events: none;
+        transition: var(--transition-smooth);
+    }
+
+    .nav-links a {
+        font-size: 16px;
+        display: block;
+        width: 100%;
+        padding: 6px 0;
+    }
+
+    .nav-links a::after {
+        display: none; /* Հեռախոսի վրա անջատում ենք տակի գծիկը */
+    }
+
+    /* Երբ մենյուն ակտիվ է */
+    .nav-links.is-active {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+    }
+
+    /* Բուրգերի տրանսֆորմացիան X-ի */
+    .burger-menu.is-active .line:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .burger-menu.is-active .line:nth-child(2) {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    .burger-menu.is-active .line:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
 @media (max-width: 768px) {
     html {
         font-size: 15px;
