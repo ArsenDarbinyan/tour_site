@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Հայաստանի Տուրեր | Բացահայտիր Հայաստանը</title>
+    <meta name="description" content="Լավագույն տուրերը Հայաստանում: Բացահայտեք պատմությունը, մշակույթը և բնությունը մեզ հետ:">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="hero.css">
+    <link rel="stylesheet" href="tours.css">
+    <link rel="stylesheet" href="tour-details.css">
+    <link rel="stylesheet" href="accordion.css">
+    <link rel="stylesheet" href="achievements.css">
+    <link rel="stylesheet" href="footer.css">
+</head>
+<body>
+    <!-- Глобальный эффект частиц -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- РАЗДЕЛ 1: Герой (Hero) -->
+    <header class="hero" id="hero">
+        <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1613328400494-b1eb21ab7911?q=80&w=2000&auto=format&fit=crop');"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Բացահայտիր Հայաստանի Հրաշալիքները</h1>
+            <p class="hero-subtitle">Անմոռանալի ճանապարհորդություններ դեպի հնագույն վանքեր, լեռներ և բնության գրկում</p>
+            <button class="cta-button">Դիտել Տուրերը</button>
+        </div>
+        <div class="hero-fade-bottom"></div>
+    </header>
+
+    <!-- РАЗДЕЛ 2: Карусель туров -->
+    <section class="tours-section" id="tours-carousel">
+        <div class="container">
+            <h2 class="section-title">Մեր Տուրերը</h2>
+            
+            <!-- Фильтры -->
+            <div class="filters-panel">
+                <div class="filter-group" id="filter-price">
+                    <button class="filter-chip active" data-filter="all">Բոլորը</button>
+                    <button class="filter-chip" data-filter="low">Մինչև 50 հզր ֏</button>
+                    <button class="filter-chip" data-filter="mid">50-100 հզր ֏</button>
+                    <button class="filter-chip" data-filter="high">100+ հզր ֏</button>
+                </div>
+            </div>
+
+            <!-- Карусель -->
+            <div class="carousel-container">
+                <div class="carousel-track" id="carousel-track">
+                    <!-- Карточки будут добавлены через JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- РАЗДЕЛ 3: Детали выбранного тура (Интерактивный маршрут) -->
+    <section class="tour-details-section" id="tour-details">
+        <div class="container">
+            <h2 class="section-title" id="details-tour-title">Ընտրեք տուր</h2>
+            <p class="details-placeholder">Ընտրեք որևէ տուր վերևի ցուցակից, որպեսզի տեսնեք դրա մանրամասները և երթուղին:</p>
+            
+            <div class="route-display">
+                <!-- Большое изображение текущей точки -->
+                <div class="route-image-container">
+                    <img id="route-main-image" src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=2000&auto=format&fit=crop" alt="Route Point">
+                    <div class="route-info-overlay">
+                        <h3 id="route-point-title">Ընտրեք տուր</h3>
+                        <p id="route-point-desc">Տեսեք երթուղու մանրամասները ` ընտրությանց հետո:</p>
+                    </div>
+                    <!-- Миниатюра (опционально) -->
+                    <div class="route-thumbnail" id="route-thumbnail" style="opacity: 0; pointer-events: none;">
+                        <img id="route-thumb-img" src="" alt="Landmark">
+                        <span id="route-thumb-title">Անվանում</span>
+                    </div>
+                </div>
+
+                <!-- Управление и прогресс маршрута -->
+                <div class="route-controls">
+                    <button class="route-btn" id="route-prev" aria-label="Նախորդ">←</button>
+                    
+                    <div class="route-timeline" id="route-timeline">
+                        <!-- Линия маршрута с точками будет сгенерирована через JS -->
+                    </div>
+
+                    <button class="route-btn" id="route-next" aria-label="Հաջորդ">→</button>
+                </div>
+            </div>
+
+            <!-- Кнопка "Записаться" -->
+            <div class="booking-container">
+                <button class="booking-btn" id="booking-btn">Գրանցվել Հիմա</button>
+                <div class="booking-options" id="booking-options">
+                    <a href="#" class="social-btn telegram" id="btn-telegram" target="_blank" rel="noopener">Telegram</a>
+                    <a href="#" class="social-btn whatsapp" id="btn-whatsapp" target="_blank" rel="noopener">WhatsApp</a>
+                    <!-- Instagram just opens profile -->
+                    <a href="https://instagram.com/armenia_tours_demo" class="social-btn instagram" id="btn-instagram" target="_blank" rel="noopener">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- РАЗДЕЛ 4: Три вертикальные карточки -->
+    <section class="vertical-cards-section">
+        <div class="container">
+           
+            <div class="accordion-container">
+                <div class="accordion-card active">
+                    <div class="card-bg-1" ></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <h3>Արկածային</h3>
+                    </div>
+                </div>
+                <div class="accordion-card">
+                    <div class="card-bg-2"  ></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <h3>Մշակութային</h3>
+                    </div>
+                </div>
+                <div class="accordion-card">
+                    <div class="card-bg-3" ></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <h3>Համտես</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- РАЗДЕЛ 5: Достижения -->
+    <section class="achievements-section" id="achievements">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="15000">0</div>
+                    <div class="stat-label">Զբոսաշրջիկներ</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="350">0</div>
+                    <div class="stat-label">Տուրեր</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="10">0</div>
+                    <div class="stat-label">Տարի շուկայում</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="5" data-decimal="1">0.0</div>
+                    <div class="stat-label">Վարկանիշ</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- РАЗДЕЛ 6: Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Հայաստանի Տուրեր</h3>
+                    <p>Բացահայտիր անսահման գեղեցկությունը մեզ հետ։</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Արագ հղումներ</h4>
+                    <ul>
+                        <li><a href="#hero">Գլխավոր</a></li>
+                        <li><a href="#tours-carousel">Տուրեր</a></li>
+                        <li><a href="#achievements">Մեր Մասին</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contacts">
+                    <h4>Կապ մեզ հետ</h4>
+                    <p>Երևան, Հայաստան</p>
+                    <p>info@armeniadiscovertours.com</p>
+                    <p>+374 99 00 00 00</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Հայաստանի Տուրեր. Բոլոր իրավունքները պաշտպանված են:</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Скрипты -->
+    <script src="particles.js"></script>
+    <script type="module" src="main.js"></script>
+</body>
+</html>
