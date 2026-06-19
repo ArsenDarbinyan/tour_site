@@ -15,3 +15,23 @@ window.addEventListener('DOMContentLoaded', () => {
     initAchievements();
     initFooter();
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const burgerToggle = document.getElementById('burger-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const allLinks = document.querySelectorAll('.nav-links a');
+
+    // 1. Բուրգեր կոճակի սեղմում (մենյուի բացում/փակում)
+    burgerToggle.addEventListener('click', () => {
+        burgerToggle.classList.toggle('is-active');
+        navLinks.classList.toggle('is-active');
+    });
+
+    // 2. Սեկցիայի անվան վրա սեղմելիս մենյուի ավտոմատ փակում (հեռախոսների համար)
+    allLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            burgerToggle.classList.remove('is-active');
+            navLinks.classList.remove('is-active');
+        });
+    });
+});
