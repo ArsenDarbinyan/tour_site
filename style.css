@@ -57,19 +57,19 @@ body {
 
 /* ================== ՊՐՈՖԵՍԻՈՆԱԼ ԺԱՄԱՆԱԿԱԿԻՑ ՆԱՎԲԱՐ ================== */
 :root {
-    --nav-bg: rgba(255, 255, 255, 0.85); /* Թափանցիկ ֆոն ապակու էֆեկտի համար */
-    --nav-blur: 12px; /* Ապակու լղոզման (blur) էֆեկտ */
-    --text-color: #1d1d1f; /* Apple-ի ստանդարտ մուգ մոխրագույն */
-    --accent-color: #0071e3; /* Պրոֆեսիոնալ կապույտ (Premium Blue) */
+    --nav-bg: rgba(255, 255, 255, 0.85);
+    --nav-blur: 12px;
+    --text-color: #1d1d1f;
+    --accent-color: #0071e3;
+    /* Կապույտ շեշտադրում (կարող եք փոխել ձեր կայքի հիմնական գույնով) */
     --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px; /* Էջը իջնելիս չի թաքնվի նավբարի հետևում */
+    scroll-padding-top: 80px;
 }
 
-/* Գլխավոր կոնտեյներ */
 .main-header {
     position: fixed;
     top: 0;
@@ -77,11 +77,10 @@ html {
     width: 100%;
     background-color: var(--nav-bg);
     backdrop-filter: blur(var(--nav-blur));
-    -webkit-backdrop-filter: blur(var(--nav-blur)); /* Safari-ի համար */
+    -webkit-backdrop-filter: blur(var(--nav-blur));
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     z-index: 9999;
-    transition: var(--transition-smooth);
 }
 
 .navbar {
@@ -90,26 +89,50 @@ html {
     align-items: center;
     max-width: 1240px;
     margin: 0 auto;
-    padding: 16px 24px;
+    padding: 14px 24px;
 }
 
-/* Լոգո */
 .logo-img {
-    height: 42px;
+    height: 40px;
     width: auto;
     display: block;
     transition: transform 0.3s ease;
 }
 
-.logo-img:hover {
-    transform: scale(1.03); /* Նուրբ մեծացում լոգոյի վրա մկնիկը պահելիս */
+/* ԳՐԱՆՑՎԵԼՈՒ ԿՈՃԱԿԻ ՈՃԵՐԸ (ՄԵՋՏԵՂՈՒՄ) */
+.nav-auth {
+    margin-right: auto;
+    /* Այս տողը կոճակը հրում է դեպի ձախ՝ լոգոյի մոտ, իսկ մենյուն մնում է աջում */
+    margin-left: 40px;
+    /* Տարածություն լոգոյից */
+}
+
+.btn-register {
+    display: inline-block;
+    background-color: var(--accent-color);
+    /* Կիրառվում է ձեր կայքի մյուս կոճակների գույնը */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    /* Կլորացված ժամանակակից կոճակ */
+    font-size: 14px;
+    font-weight: 600;
+    transition: var(--transition-smooth);
+    box-shadow: 0 4px 12px rgba(0, 113, 227, 0.2);
+}
+
+.btn-register:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 113, 227, 0.3);
+    opacity: 0.9;
 }
 
 /* Մենյուի հղումները (Desktop) */
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 32px;
+    gap: 28px;
 }
 
 .nav-links a {
@@ -117,13 +140,11 @@ html {
     color: var(--text-color);
     font-weight: 500;
     font-size: 15px;
-    letter-spacing: -0.2px;
     position: relative;
     padding: 4px 0;
     transition: var(--transition-smooth);
 }
 
-/* Գեղեցիկ գծիկի անիմացիա հղումների տակ (Hover Line Effect) */
 .nav-links a::after {
     content: '';
     position: absolute;
@@ -140,16 +161,18 @@ html {
 }
 
 .nav-links a:hover::after {
-    width: 100%; /* Գծիկը սահուն բացվում է ձախից աջ */
+    width: 100%;
 }
 
-/* Բուրգեր կոճակը */
+/* Բուրգեր կոճակ */
 .burger-menu {
     display: none;
     cursor: pointer;
     flex-direction: column;
     gap: 6px;
-    padding: 4px;
+    padding: 6px;
+    z-index: 10001;
+    /* Որպեսզի միշտ լինի ամենավերևում */
 }
 
 .burger-menu .line {
@@ -160,10 +183,365 @@ html {
     transition: var(--transition-smooth);
 }
 
-/* 📱 ԱԴԱՊՏԱՑԻԱ ՀԵՌԱԽՈՍՆԵՐԻ ՀԱՄԱՐ (Mobile & Tablet) */
-@media screen and (max-width: 992px) {
+/* ================== 5-ՐԴ ՍԵԿՑԻԱՅԻ ԿԱՏԱՐՅԱԼ ՈՃԵՐԸ ================== */
+.achievements-section {
+    background-color: #0b523a;
+    /* Ձեր մուգ կանաչ ֆոնը */
+    padding: 80px 20px;
+    color: #ffffff;
+    /* Ամբողջ սեկցիայի տեքստը դարձնում ենք սպիտակ */
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+/* Փոքր վերնագիր (բաց կանաչ/նեոնային՝ մուգ ֆոնի վրա լավ երևալու համար) */
+.section-header .subtitle {
+    display: block;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #2ed573;
+    /* Վառ կանաչ */
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+/* Գլխավոր մեծ վերնագիրը (Սպիտակ) */
+.section-header .main-title {
+    font-size: 36px;
+    color: #ffffff;
+    /* Փոխվեց սպիտակի */
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin: 0;
+}
+
+/* Գծիկ վերնագրի տակ (Սպիտակ կամ բաց կանաչ) */
+.section-header .title-devider {
+    width: 60px;
+    height: 4px;
+    background-color: #2ed573;
+    border-radius: 2px;
+    margin: 15px auto 0 auto;
+}
+
+/* ԹՎԵՐԻ ԿՈՆՏԵՅՆԵՐ (Այս հատվածը կբերի մեջտեղ և կդասավորի իրար կողք) */
+.achievements-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    /* Տարածություն կարտոչկաների միջև */
+    max-width: 1100px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    /* Որպեսզի հեռախոսի վրա ավտոմատ իջնեն իրար տակ */
+}
+
+/* Յուրաքանչյուր թվի բլոկը */
+.achievement-card {
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+    /* Չափսը փոքր էկրանների համար */
+}
+
+/* Բուն Թվերը (Մեծ և վառ) */
+.achievement-card .counter {
+    display: block;
+    font-size: 48px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-family: sans-serif;
+}
+
+/* Թվերի տակի տեքստերը */
+.achievement-card p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    /* Թեթև թափանցիկ սպիտակ, շատ էլեգանտ տեսքի համար */
+    font-weight: 500;
+    margin: 0;
+}
+
+/* ================== ՊՐՈՖԵՍԻՈՆԱԼ ԻՆՏԵՐԱԿՏԻՎ ՖՈՒՏԵՐ ================== */
+.footer {
+    background-color: #0f172a;
+    /* Ժամանակակից Deep Dark ֆոն */
+    color: #ffffff;
+    padding: 80px 20px 30px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 230px;
+}
+
+.footer-logo {
+    height: 45px;
+    width: auto;
+    margin-bottom: 20px;
+}
+
+.footer-about p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #94a3b8;
+}
+
+.footer-column h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 35px;
+    height: 3px;
+    background-color: #28a745;
+    /* Ձեր կանաչ շեշտադրումը */
+    border-radius: 2px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: #28a745;
+    transform: translateX(5px);
+}
+
+/* Կոնտակտային տվյալներ */
+.footer-contact p {
+    font-size: 14px;
+    color: #94a3b8;
+    margin-bottom: 15px;
+}
+
+.footer-contact p span {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.phone-display a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.phone-display a:hover {
+    color: #28a745;
+}
+
+/* 📱 ՉԱՏԻ ԿՈՃԱԿՆԵՐԻ ԵՎ ԼՈԳՈՆԵՐԻ ԷՖԵԿՏՆԵՐԸ */
+.chat-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.chat-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    /* Տարածություն լոգոյի և տեքստի միջև */
+    padding: 10px 18px;
+    border-radius: 12px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Բրենդային գույներ և Glow (փայլի) էֆեկտներ */
+.chat-btn.whatsapp {
+    background-color: #25d366;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.2);
+}
+
+.chat-btn.telegram {
+    background-color: #0088cc;
+    box-shadow: 0 4px 14px rgba(0, 136, 204, 0.2);
+}
+
+.chat-btn i {
+    font-size: 18px;
+    /* Լոգոյի չափսը */
+}
+
+/* Համակարգչով մկնիկը պահելիս և Հեռախոսով սեղմելու (Touch) պահին աշխատող էֆեկտը */
+.chat-btn:hover,
+.chat-btn:active {
+    transform: translateY(-3px) scale(1.04);
+    /* Կոճակը թռչում է առաջ */
+}
+
+.chat-btn.whatsapp:hover,
+.chat-btn.whatsapp:active {
+    background-color: #20ba5a;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
+    /* Վառ կանաչ փայլ */
+}
+
+.chat-btn.telegram:hover,
+.chat-btn.telegram:active {
+    background-color: #0077b3;
+    box-shadow: 0 8px 25px rgba(0, 136, 204, 0.45);
+    /* Վառ կապույտ փայլ */
+}
+
+/* Ամենաներքևի մասը */
+.footer-bottom {
+    max-width: 1200px;
+    margin: 60px auto 0 auto;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-size: 13px;
+    color: #64748b;
+    margin: 0;
+}
+
+/* 📱 ԱԴԱՊՏԱՑԻԱ ՀԵՌԱԽՈՍՆԵՐԻ ՀԱՄԱՐ */
+/* 📱 ԱԴԱՊՏԱՑԻԱ ՀԵՌԱԽՈՍՆԵՐԻ ՀԱՄԱՐ (Մինչև 768px էկրաններ) */
+@media screen and (max-width: 768px) {
+    .footer {
+        padding: 50px 20px 20px 20px;
+        text-align: center;
+        /* 1. Ամբողջ ֆուտերի բովանդակությունը բերում է մեջտեղ */
+    }
+
+    .footer-container {
+        flex-direction: column;
+        /* Սյունակները դասավորվում են ուղիղ իրար տակ */
+        gap: 40px;
+        align-items: center;
+        /* 2. Կոնտեյներները կենտրոնացնում է էջի մեջտեղում */
+    }
+
+    .footer-column {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* 3. Յուրաքանչյուր սյունակի ներսի տարրերը հավասարեցնում է կենտրոնով */
+    }
+
+    .footer-logo {
+        margin: 0 auto 20px auto;
+        /* 4. Լոգո նկարը բերում է կենտրոն */
+    }
+
+    /* Վերնագրերի տակի կանաչ գծիկները կենտրոնացնելու համար */
+    .footer-column h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+        /* 5. Գծիկը տեղափոխում է վերնագրի ճիշտ մեջտեղը */
+    }
+
+    .footer-links {
+        width: 100%;
+        padding: 0;
+    }
+
+    .footer-links li {
+        text-align: center;
+        /* 6. Հղումների տեքստերը կենտրոնում */
+    }
+
+    .chat-actions {
+        flex-direction: row;
+        width: 100%;
+        max-width: 320px;
+        /* 7. Կոճակները հեռախոսի վրա շատ չեն լայնանա և կմնան գեղեցիկ */
+        justify-content: center;
+    }
+}
+
+/* /////////////footeri avart
+
+/* 📱 ԱԴԱՊՏԱՑԻԱ ՀԵՌԱԽՈՍՆԵՐԻ ՀԱՄԱՐ (Մինչև 768px էկրաններ) */
+@media screen and (max-width: 768px) {
+    .achievements-container {
+        flex-direction: column;
+        /* Փոխում է ուղղությունը՝ ուղիղ իրար տակ */
+        gap: 45px;
+        /* Տարածություն իրար տակ գտնվող թվերի միջև */
+        text-align: center;
+    }
+
+    .achievement-card {
+        width: 100%;
+        /* Յուրաքանչյուր թիվ զբաղեցնում է ամբողջ լայնությունը */
+        flex: none;
+        /* Չեղարկում է կողք կողքի կիսվելու հատկությունը */
+    }
+
+    .section-header .main-title {
+        font-size: 28px;
+        /* Վերնագիրը մի փոքր փոքրացնում ենք հեռախոսի համար */
+    }
+
+    .achievement-card .counter {
+        font-size: 40px;
+        /* Թվերի չափսը հեռախոսի վրա */
+    }
+
+    .achievement-card p {
+        font-size: 15px;
+        /* Տեքստի չափսը հեռախոսի վրա */
+    }
+}
+
+/* 5rdi verrrrrj */
+
+/* 📱 ԱԴԱՊՏԱՑԻԱ ՀԵՌԱԽՈՍՆԵՐԻ ՀԱՄԱՐ */
+@media screen and (max-width: 900px) {
     .nav-links {
-        gap: 24px; /* Փոքր էկրանների վրա մի փոքր սեղմում ենք տարածությունը */
+        gap: 15px;
     }
 }
 
@@ -172,58 +550,76 @@ html {
         display: flex;
     }
 
-    /* Հեռախոսի փոքր, պրեմիում պատուհանը (Dropdown) */
+    .nav-auth {
+        margin-left: auto;
+        /* Հեռախոսի վրա կոճակը մնում է մեջտեղում */
+        margin-right: 20px;
+    }
+
+    .btn-register {
+        padding: 6px 14px;
+        font-size: 13px;
+    }
+
+    /* Հեռախոսի Փոքր Պատուհանը (Dropdown) */
     .nav-links {
-        position: absolute;
-        top: calc(100% + 12px);
-        right: 20px;
+        position: fixed;
+        /* Փոխված է fixed-ի, որպեսզի էջի սքրոլի ժամանակ չկորչի */
+        top: 70px;
+        right: 24px;
         background-color: rgba(255, 255, 255, 0.98);
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
-        border: 1px solid rgba(0, 0, 0, 0.05);
-        border-radius: 16px; /* Կլորացված ժամանակակից անկյուններ */
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        border-radius: 16px;
         padding: 24px;
         flex-direction: column;
         gap: 20px;
         width: 260px;
         text-align: left;
-        
-        /* Հանգիստ վիճակում թաքցրած է */
+
+        /* Թաքցված վիճակ */
         opacity: 0;
+        visibility: hidden;
+        /* Ավելացվել է ավելի ապահով թաքցնելու համար */
         transform: translateY(-15px) scale(0.95);
-        pointer-events: none;
         transition: var(--transition-smooth);
+        pointer-events: none;
+    }
+
+    /* Երբ JS-ով ավելանում է .is-active դասը */
+    .nav-links.is-active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
     }
 
     .nav-links a {
         font-size: 16px;
         display: block;
         width: 100%;
-        padding: 6px 0;
+        padding: 4px 0;
     }
 
     .nav-links a::after {
-        display: none; /* Հեռախոսի վրա անջատում ենք տակի գծիկը */
-    }
-
-    /* Երբ մենյուն ակտիվ է */
-    .nav-links.is-active {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        pointer-events: auto;
+        display: none;
     }
 
     /* Բուրգերի տրանսֆորմացիան X-ի */
     .burger-menu.is-active .line:nth-child(1) {
         transform: translateY(8px) rotate(45deg);
     }
+
     .burger-menu.is-active .line:nth-child(2) {
         opacity: 0;
         transform: translateX(-10px);
     }
+
     .burger-menu.is-active .line:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
 }
+
 
 @media (max-width: 768px) {
     html {
