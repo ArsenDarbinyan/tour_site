@@ -26,6 +26,8 @@
     <!-- Глобальный эффект частиц -->
     <canvas id="particles-canvas"></canvas>
     <!-- ================== ՊՐՈՖԵՍԻՈՆԱԼ ՆԱՎԲԱՐԻ ՍԿԻԶԲ ================== -->
+    <div class="nav-overlay" id="nav-overlay"></div> <!-- Ֆոնի մթնեցման էֆեկտ հեռախոսի համար -->
+
     <header class="main-header">
         <nav class="navbar">
             <!-- Ձախ կողմի լոգոն -->
@@ -35,7 +37,7 @@
                 </a>
             </div>
 
-            <!-- ՄԵՋՏԵՂԻ ՀԱՏՎԱԾ: Գրանցման կոճակ (երևում է համակարգչի և հեռախոսի վրա) -->
+            <!-- ՄԵՋՏԵՂԻ ՀԱՏՎԱԾ: Գրանցման կանաչ կոճակ -->
             <div class="nav-auth">
                 <a href="#register" class="btn-register">Գրանցվել</a>
             </div>
@@ -45,7 +47,7 @@
                 <li><a href="#hero">Հիմնական հատված</a></li>
                 <li><a href="#tours-carousel">Մեր տուրերը</a></li>
                 <li><a href="#tour-details">Տուրերի մասին</a></li>
-                <li><a href="#drivers">Մեր վարորդները</a></li>
+                <li><a href="#drivers">Մեր varordnery</a></li>
                 <li><a href="#achievements">Մեր առավելությունները</a></li>
                 <li><a href="#footer">Կապ մեզ հետ</a></li>
             </ul>
@@ -96,7 +98,7 @@
                     <!-- Карточки будут добавлены через JS -->
                 </div>
 
-                
+
             </div>
         </div>
     </section>
@@ -153,35 +155,117 @@
         </div>
     </section>
 
-    <!-- РАЗДЕЛ 4: Три вертикальные карточки -->
-    <section class="vertical-cards-section" id="drivers">
-        <div class="container">
+    <!-- РАЗДЕЛ 4: Մեր վարորդները (3 Հորիզոնական Շարք + Liquid Էֆեկտ) -->
+    <section class="drivers-section" id="drivers">
 
-            <div class="accordion-container">
-                <div class="accordion-card active">
-                    <div class="card-bg-1"></div>
-                    <div class="card-overlay"></div>
-                    <div class="card-content">
-                        <h3>Արկածային</h3>
+        <!-- Սեկցիայի Վերնագիր -->
+        <div class="section-header">
+            <span class="subtitle">Պրոֆեսիոնալ թիմ</span>
+            <h2 class="main-title" style="color: #1d1d1f;">Մեր վարորդները</h2>
+            <div class="title-devider"></div>
+        </div>
+
+        <div class="marquee-rows-container">
+
+            <!-- ================= ՇԱՐՔ 1 ================= -->
+            <div class="marquee-wrapper">
+                <div class="marquee-track row-1">
+                    <!-- Օրիգինալ Քարտեր -->
+                    <div class="driver-card">
+                        <img src="images.jpg" alt="Driver">
+                        <h3>Արմեն Գրիգորյան</h3>
+                        <p>10 տարվա փորձ</p>
+                        <div class="liquid-badge"><span>Արկածային</span></div>
                     </div>
-                </div>
-                <div class="accordion-card">
-                    <div class="card-bg-2"></div>
-                    <div class="card-overlay"></div>
-                    <div class="card-content">
-                        <h3>Մշակութային</h3>
+                    <div class="driver-card">
+                        <img src="images.jpg" alt="Driver">
+                        <h3>Կարեն Ավետիսյան</h3>
+                        <p>8 տարվա փորձ</p>
+                        <div class="liquid-badge"><span>Մշակութային</span></div>
                     </div>
-                </div>
-                <div class="accordion-card">
-                    <div class="card-bg-3"></div>
-                    <div class="card-overlay"></div>
-                    <div class="card-content">
-                        <h3>Համտես</h3>
+                    <!-- Կրկնօրինակներ անվերջության համար -->
+                    <div class="driver-card" aria-hidden="true">
+                        <img src="images.jpg" alt="Driver">
+                        <h3>Արմեն Գրիգորյան</h3>
+                        <p>10 տարվա փորձ</p>
+                        <div class="liquid-badge"><span>Արկածային</span></div>
+                    </div>
+                    <div class="driver-card" aria-hidden="true">
+                        <img src="images.jpg" alt="Driver">
+                        <h3>Կարեն Ավետիսյան</h3>
+                        <p>8 տարվա փորձ</p>
+                        <div class="liquid-badge"><span>Մշակութային</span></div>
                     </div>
                 </div>
             </div>
+
+            <!-- ================= ՇԱՐՔ 2 ================= -->
+            <div class="marquee-wrapper">
+                <div class="marquee-track row-2">
+                    <!-- Օրիգինալ Քարտեր -->
+                    <div class="driver-card">
+                        <img src="images.jpg" alt="Driver">
+                        <h3>Դավիթ Սարգսյան</h3>
+                        <p>12 տարվա փորձ</p>
+                        <div class="liquid-badge"><span>Արկածային</span></div>
+                    </div>
+                    <div class="driver-card">
+                        <img src="images.jpg" alt="Driver">
+                        <h3>Ալեն Մինասյան</h3>
+                        <p>7 տարվա փորձ</p>
+                        <div class="liquid-badge"><span>Մշակութային</span></div>
+                    </div>
+                    <!-- Կրկնօրինակներ անվերջության համար -->
+                    <div class="driver-card" aria-hidden="true">
+                        <img src="images.jpg" alt="Driver">
+                        <h3>Դավիթ Սարգսյան</h3>
+                        <p>12 տարվա փորձ</p>
+                        <div class="liquid-badge"><span>Արկածային</span></div>
+                    </div>
+                    <div class="driver-card" aria-hidden="true">
+                        <img src="images.jpg" alt="Driver">
+                        <h3>Ալեն Մինասյան</h3>
+                        <p>7 տարվա փորձ</p>
+                        <div class="liquid-badge"><span>Մշակութային</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= ՇԱՐՔ 3 ================= -->
+            <div class="marquee-wrapper">
+                <div class="marquee-track row-3">
+                    <!-- Օրիգինալ Քարտեր -->
+                    <div class="driver-card">
+                        <img src="images.jpg" alt="Driver">
+                        <h3>Հայկ Հակոբյան</h3>
+                        <p>9 տարվա փորձ</p>
+                        <div class="liquid-badge"><span>Մշակութային</span></div>
+                    </div>
+                    <div class="driver-card">
+                        <img src="images.jpg" alt="Driver">
+                        <h3>Գոռ Երանոսյան</h3>
+                        <p>15 տարվա փորձ</p>
+                        <div class="liquid-badge"><span>Արկածային</span></div>
+                    </div>
+                    <!-- Կրկնօրինակներ անվերջության համար -->
+                    <div class="driver-card" aria-hidden="true">
+                        <img src="images.jpg" alt="Driver">
+                        <h3>Հայկ Հակոբյան</h3>
+                        <p>9 տարվա փորձ</p>
+                        <div class="liquid-badge"><span>Մշակութային</span></div>
+                    </div>
+                    <div class="driver-card" aria-hidden="true">
+                        <img src="images.jpg" alt="Driver">
+                        <h3>Գոռ Երանոսյան</h3>
+                        <p>15 տարվա փորձ</p>
+                        <div class="liquid-badge"><span>Արկածային</span></div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
+
 
     <!-- РАЗДЕЛ 5: Достижения -->
     <section class="achievements-section" id="achievements">
