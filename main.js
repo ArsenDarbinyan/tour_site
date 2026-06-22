@@ -15,36 +15,45 @@ window.addEventListener('DOMContentLoaded', () => {
     initAchievements();
     initFooter();
 });
-// ================== ՆԱՎԲԱՐԻ ՖՈՒՆԿՑԻՈՆԱԼՈՒԹՅՈՒՆ ==================
+// ================== ՆԱՎԲԱՐԻ ԿԱՏԱՐԵԼԱԳՈՐԾՎԱԾ ՖՈՒՆԿՑԻՈՆԱԼՈՒԹՅՈՒՆ ==================
 document.addEventListener('DOMContentLoaded', () => {
     const burgerToggle = document.getElementById('burger-toggle');
     const navLinks = document.querySelector('.nav-links');
+    const navOverlay = document.getElementById('nav-overlay');
     const allLinks = document.querySelectorAll('.nav-links a');
 
-    // Ստուգում ենք՝ արդյոք բուրգեր կոճակը գոյություն ունի էջում
-    if (burgerToggle && navLinks) {
-
-        // 1. Բուրգեր կոճակի սեղմում (մենյուի բացում/փակում)
-        burgerToggle.addEventListener('click', (e) => {
-            e.stopPropagation(); // Կանխում է իրադարձության տարածումը
+    if (burgerToggle && navLinks && navOverlay) {
+        
+        // Մենյուն բացելու/փակելու ֆունկցիա
+        const toggleMenu = () => {
             burgerToggle.classList.toggle('is-active');
             navLinks.classList.toggle('is-active');
+            navOverlay.classList.toggle('is-active'); // Միացնում/անջատում է մութ ֆոնը
+        };
+
+        // Մենյուն միայն փակելու ֆունկցիա
+        const closeMenu = () => {
+            burgerToggle.classList.remove('is-active');
+            navLinks.classList.remove('is-active');
+            navOverlay.classList.remove('is-active');
+        };
+
+        // 1. Բուրգեր կոճակի սեղմում
+        burgerToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMenu();
         });
 
-        // 2. Սեկցիայի անվան վրա սեղմելիս մենյուի ավտոմատ փակում
+        // 2. Հղման վրա սեղմելիս փակում
         allLinks.forEach(link => {
             link.addEventListener('click', () => {
-                burgerToggle.classList.remove('is-active');
-                navLinks.classList.remove('is-active');
+                closeMenu();
             });
         });
 
-        // 3. Էջի ցանկացած այլ տեղ սեղմելիս մենյուն ավտոմատ կփակվի
-        document.addEventListener('click', (e) => {
-            if (!navLinks.contains(e.target) && !burgerToggle.contains(e.target)) {
-                burgerToggle.classList.remove('is-active');
-                navLinks.classList.remove('is-active');
-            }
+        // 3. Սեղմում մութ ֆոնի (Overlay) վրա՝ մենյուի փակում
+        navOverlay.addEventListener('click', () => {
+            closeMenu();
         });
     }
 });
