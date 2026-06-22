@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="hy">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Հայաստանի Տուրեր | Բացահայտիր Հայաստանը</title>
+    <meta name="description"
+        content="Լավագույն տուրերը Հայաստանում: Բացահայտեք պատմությունը, մշակույթը և բնությունը մեզ հետ:">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="hero.css">
+    <link rel="stylesheet" href="tours.css">
+    <link rel="stylesheet" href="tour-details.css">
+    <link rel="stylesheet" href="accordion.css">
+    <link rel="stylesheet" href="achievements.css">
+    <link rel="stylesheet" href="footer.css">
+    <!-- Միացնում ենք Font Awesome պատկերակների գրադարանը լոգոների համար -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+
+</head>
+
+<body>
+    <!-- Глобальный эффект частиц -->
+    <canvas id="particles-canvas"></canvas>
+    <!-- ================== ՊՐՈՖԵՍԻՈՆԱԼ ՆԱՎԲԱՐԻ ՍԿԻԶԲ ================== -->
+    <header class="main-header">
+        <nav class="navbar">
+            <!-- Ձախ կողմի լոգոն -->
+            <div class="nav-logo">
+                <a href="#">
+                    <img src="/logo5.png" alt="Logo" class="logo-img">
+                </a>
+            </div>
+
+            <!-- ՄԵՋՏԵՂԻ ՀԱՏՎԱԾ: Գրանցման կոճակ (երևում է համակարգչի և հեռախոսի վրա) -->
+            <div class="nav-auth">
+                <a href="#register" class="btn-register">Գրանցվել</a>
+            </div>
+
+            <!-- Աջ կողմի մենյուն -->
+            <ul class="nav-links">
+                <li><a href="#hero">Հիմնական հատված</a></li>
+                <li><a href="#tours-carousel">Մեր տուրերը</a></li>
+                <li><a href="#tour-details">Տուրերի մասին</a></li>
+                <li><a href="#drivers">Մեր վարորդները</a></li>
+                <li><a href="#achievements">Մեր առավելությունները</a></li>
+                <li><a href="#footer">Կապ մեզ հետ</a></li>
+            </ul>
+
+            <!-- Հեռախոսի Բուրգեր Մենյու (3 գծիկներով) -->
+            <div class="burger-menu" id="burger-toggle">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
+        </nav>
+    </header>
+    <!-- ================== ՊՐՈՖԵՍԻՈՆԱԼ ՆԱՎԲԱՐԻ ՎԵՐՋ ================== -->
+
+
+    <!-- РАЗДЕЛ 1: Герой (Hero) -->
+    <header class="hero" id="hero">
+        <div class="hero-bg"
+            style="background-image: url('https://images.unsplash.com/photo-1613328400494-b1eb21ab7911?q=80&w=2000&auto=format&fit=crop');">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Բացահայտիր Հայաստանի Հրաշալիքները</h1>
+            <p class="hero-subtitle">Անմոռանալի ճանապարհորդություններ դեպի հնագույն վանքեր, լեռներ և բնության գրկում</p>
+            <button class="cta-button">Դիտել Տուրերը</button>
+        </div>
+        <div class="hero-fade-bottom"></div>
+    </header>
+
+    <!-- РАЗДЕЛ 2: Карусель туров -->
+    <section class="tours-section" id="tours-carousel">
+        <div class="container">
+            <h2 class="section-title">Մեր Տուրերը</h2>
+
+            <!-- Фильтры -->
+            <div class="filters-panel">
+                <div class="filter-group" id="filter-price">
+                    <button class="filter-chip active" data-filter="all">Բոլորը</button>
+                    <button class="filter-chip" data-filter="low">Մինչև 50 հզր ֏</button>
+                    <button class="filter-chip" data-filter="mid">50-100 հզր ֏</button>
+                    <button class="filter-chip" data-filter="high">100+ հզր ֏</button>
+                </div>
+            </div>
+
+            <!-- Карусель -->
+            <div class="carousel-container">
+                <div class="carousel-track" id="carousel-track">
+                    <!-- Карточки будут добавлены через JS -->
+                </div>
+
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- РАЗДЕЛ 3: Детали выбранного тура (Интерактивный маршрут) -->
+    <section class="tour-details-section" id="tour-details">
+        <div class="container">
+            <h2 class="section-title" id="details-tour-title">Ընտրեք տուր</h2>
+            <p class="details-placeholder">Ընտրեք որևէ տուր վերևի ցուցակից, որպեսզի տեսնեք դրա մանրամասները և երթուղին:
+            </p>
+
+            <div class="route-display">
+                <!-- Большое изображение текущей точки -->
+                <div class="route-image-container">
+                    <img id="route-main-image"
+                        src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=2000&auto=format&fit=crop"
+                        alt="Route Point">
+                    <div class="route-info-overlay">
+                        <h3 id="route-point-title">Ընտրեք տուր</h3>
+                        <p id="route-point-desc">Տեսեք երթուղու մանրամասները ` ընտրությանց հետո:</p>
+                    </div>
+                    <!-- Миниатюра (опционально) -->
+                    <div class="route-thumbnail" id="route-thumbnail" style="opacity: 0; pointer-events: none;">
+                        <img id="route-thumb-img" src="" alt="Landmark">
+                        <span id="route-thumb-title">Անվանում</span>
+                    </div>
+                </div>
+
+                <!-- Управление и прогресс маршрута -->
+                <div class="route-controls">
+                    <button class="route-btn" id="route-prev" aria-label="Նախորդ">←</button>
+
+                    <div class="route-timeline" id="route-timeline">
+                        <!-- Линия маршрута с точками будет сгенерирована через JS -->
+                    </div>
+
+                    <button class="route-btn" id="route-next" aria-label="Հաջորդ">→</button>
+                </div>
+            </div>
+
+            <!-- Кнопка "Записаться" -->
+            <div class="booking-container">
+                <button class="booking-btn" id="booking-btn">Գրանցվել Հիմա</button>
+                <div class="booking-options" id="booking-options">
+                    <a href="#" class="social-btn telegram" id="btn-telegram" target="_blank"
+                        rel="noopener">Telegram</a>
+                    <a href="#" class="social-btn whatsapp" id="btn-whatsapp" target="_blank"
+                        rel="noopener">WhatsApp</a>
+                    <!-- Instagram just opens profile -->
+                    <a href="https://instagram.com/armenia_tours_demo" class="social-btn instagram" id="btn-instagram"
+                        target="_blank" rel="noopener">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- РАЗДЕЛ 4: Три вертикальные карточки -->
+    <section class="vertical-cards-section" id="drivers">
+        <div class="container">
+
+            <div class="accordion-container">
+                <div class="accordion-card active">
+                    <div class="card-bg-1"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <h3>Արկածային</h3>
+                    </div>
+                </div>
+                <div class="accordion-card">
+                    <div class="card-bg-2"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <h3>Մշակութային</h3>
+                    </div>
+                </div>
+                <div class="accordion-card">
+                    <div class="card-bg-3"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <h3>Համտես</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- РАЗДЕЛ 5: Достижения -->
+    <section class="achievements-section" id="achievements">
+
+        <!-- ԺԱՄԱՆԱԿԱԿԻՑ ՎԵՐՆԱԳԻՐ (Ավելացրեք սա թվերից վերև) -->
+        <div class="section-header">
+            <span class="subtitle">Ինչու ընտրել մեզ</span>
+            <h2 class="main-title">Մեր առավելությունները</h2>
+            <div class="title-devider"></div>
+        </div>
+
+        <!-- Ձեր թվերի բլոկի օրինակը (կառուցվածքը թողեք ձերը, միայն ստուգեք data-target-ը) -->
+        <div class="achievements-container">
+            <div class="achievement-card">
+                <span class="counter" data-target="1500">0</span>
+                <p>Գոհ Հաճախորդներ</p>
+            </div>
+            <div class="achievement-card">
+                <span class="counter" data-target="250">0</span>
+                <p>Հաջողված Տուրեր</p>
+            </div>
+            <div class="achievement-card">
+                <span class="counter" data-target="15">0</span>
+                <p>Տարիների Փորձ</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- РАЗДЕЛ 6: Футер (Կապ մեզ հետ) -->
+    <footer class="footer" id="footer">
+        <div class="footer-container">
+
+            <!-- Սյունակ 1: Լոգո և Նկարագրություն -->
+            <div class="footer-column footer-about">
+                <img src="/logo5.png" alt="Logo" class="footer-logo logo-img">
+                <p>Բացահայտեք աշխարհի ամենագեղեցիկ անկյունները մեր պրոֆեսիոնալ թիմի և հարմարավետ տուրերի միջոցով։ Your
+                    trust is our priority.</p>
+            </div>
+
+            <!-- Սյունակ 2: Արագ Հղումներ -->
+            <div class="footer-column">
+                <h3>Արագ հղումներ</h3>
+                <ul class="footer-links">
+                    <li><a href="#hero">Հիմնական հատված</a></li>
+                    <li><a href="#tours-carousel">Մեր տուրերը</a></li>
+                    <li><a href="#tour-details">Տուրերի մասին</a></li>
+                    <li><a href="#achievements">Մեր առավելությունները</a></li>
+                </ul>
+            </div>
+
+            <!-- Սյունակ 3: Ուղղություններ -->
+            <div class="footer-column">
+                <h3>Ուղղություններ</h3>
+                <ul class="footer-links">
+                    <li><a href="#tours-carousel">Խմբակային տուրեր</a></li>
+                    <li><a href="#tours-carousel">Անհատական ուղևորություններ</a></li>
+                    <li><a href="#tours-carousel">VIP տրանսֆերներ</a></li>
+                    <li><a href="#drivers">Մեր վարորդները</a></li>
+                </ul>
+            </div>
+
+            <!-- Սյունակ 4: Կապ և Ինտերակտիվ Չատեր -->
+            <div class="footer-column footer-contact">
+                <h3>Կապ մեզ հետ</h3>
+                <p class="phone-display">📞 <span>Հեռախոս:</span> <a href="tel:+37477064617">+374 77 064617</a></p>
+                <p>✉️ <span>Էլ. հասցե:</span> info@tourproject.am</p>
+                <p>📍 <span>Հասցե:</span> Երևան, Հայաստան</p>
+
+                <!-- ԳԵՂԵՑԻԿ ԼՈԳՈՆԵՐԸ ԻՍԿԱԿԱՆ ՉԱՏԵՐԻ ՀՂՈՒՄՆԵՐՈՎ -->
+                <div class="chat-actions">
+                    <!-- WhatsApp Չատի Հղում -->
+                    <a href="https://wa.me" target="_blank" class="chat-btn whatsapp" aria-label="Write on WhatsApp">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <!-- Telegram Չատի Հղում -->
+                    <a href="https://t.me" target="_blank" class="chat-btn telegram" aria-label="Write on Telegram">
+                        <i class="fab fa-telegram-plane"></i> Telegram
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Հեղինակային իրավունքներ -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 Tour Project. Բոլոր իրավունքները պաշտպանված են։</p>
+        </div>
+    </footer>
+
+    <!-- Скрипты -->
+    <script src="particles.js"></script>
+    <script type="module" src="main.js"></script>
+</body>
+
+</html>
