@@ -1,0 +1,104 @@
+.tours-section {
+    padding: 5rem 0;
+    background: var(--bg-light);
+    position: relative;
+    z-index: 2;
+}
+
+.filters-panel {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filter-chip {
+    padding: 10px 20px;
+    background: #fff;
+    border: 1px solid rgba(26, 122, 94, 0.2);
+    border-radius: 25px;
+    color: var(--emerald-dark);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.filter-chip.active,
+.filter-chip:hover {
+    background: var(--emerald-mid);
+    color: #fff;
+    border-color: var(--emerald-mid);
+}
+
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+    position: relative;
+}
+
+.carousel-container::before,
+.carousel-container::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 50px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.carousel-container::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg-light) 0%, transparent 100%);
+}
+
+.carousel-container::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg-light) 0%, transparent 100%);
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    will-change: transform;
+}
+
+.tour-card {
+    flex: 0 0 280px;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    box-shadow: var(--card-shadow);
+    transform: translateY(0);
+}
+
+.tour-card:hover {
+    transform: translateY(-8px);
+}
+
+.tour-card-img {
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+}
+
+.tour-card-content {
+    padding: 15px;
+}
+
+.tour-card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--emerald-dark);
+    margin-bottom: 5px;
+}
+
+.tour-card-price {
+    color: var(--emerald-mid);
+    font-weight: 600;
+    font-size: 0.95rem;
+}

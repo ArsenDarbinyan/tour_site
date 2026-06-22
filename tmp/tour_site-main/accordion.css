@@ -1,0 +1,84 @@
+.vertical-cards-section {
+    padding: 5rem 0;
+    background: var(--bg-light);
+    position: relative;
+    z-index: 2;
+}
+
+.accordion-container {
+    display: flex;
+    height: 450px;
+    gap: 15px;
+}
+
+.accordion-card {
+    flex: 1;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.accordion-card.active {
+    flex: 3;
+}
+
+.card-bg-1,
+.card-bg-2,
+.card-bg-3 {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.6s;
+}
+
+.card-bg-1 {
+    background-image: url('download.jpg');
+}
+
+.card-bg-2 {
+    background-image: url('download.jpg');
+}
+
+.card-bg-3 {
+    background-image: url('download.jpg');
+}
+
+.accordion-card:hover .card-bg-1,
+.accordion-card:hover .card-bg-2,
+.accordion-card:hover .card-bg-3 {
+    transform: scale(1.05);
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
+}
+
+.card-content {
+    position: absolute;
+    bottom: 30px;
+    left: 20px;
+    color: #fff;
+}
+
+.card-content h3 {
+    font-size: 1.5rem;
+    margin: 0;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .accordion-container {
+        flex-direction: column;
+        height: 600px;
+    }
+
+    .accordion-card {
+        flex: 1;
+        width: 100%;
+    }
+}

@@ -1,14 +1,3 @@
-// tour-details.js — Раздел 3: детали выбранного тура
-//
-// Всё управляется из массива points каждого тура (tours.js):
-//   point.title     → заголовок текущей точки
-//   point.desc      → описание текущей точки
-//   point.img       → большая картинка
-//   point.thumb     → маленькая картинка (null = блок route-thumbnail скрыт)
-//   point.thumbTitle→ подпись под маленькой картинкой
-//
-// Количество точек (dots) на тайм-лайне = currentTour.points.length (автоматически)
-
 let currentTour = null;
 let currentRouteIndex = 0;
 let routeAutoplayTimer = null;
@@ -28,12 +17,10 @@ export function initTourDetails(defaultTour = null) {
         });
     }
 
-    // Слушаем выбор тура из карусели
     document.addEventListener('selectTour', (event) => {
         openTourDetails(event.detail, true);
     });
 
-    // Открываем тур по умолчанию без скролла
     if (defaultTour) {
         openTourDetails(defaultTour, false);
     }
@@ -46,11 +33,9 @@ function openTourDetails(tour, shouldScroll = true) {
     const details = document.getElementById('tour-details');
     if (!details) return;
 
-    // Устанавливаем заголовок раздела = название тура
-    const titleEl = document.getElementById('details-tour-title');
-    if (titleEl) titleEl.innerText = tour.title;
+    const title = document.getElementById('details-tour-title');
+    if (title) title.innerText = tour.title;
 
-    // Скрываем плейсхолдер
     const placeholder = document.querySelector('.details-placeholder');
     if (placeholder) placeholder.style.display = 'none';
 
@@ -59,50 +44,37 @@ function openTourDetails(tour, shouldScroll = true) {
         details.scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Рисуем тайм-лайн с количеством dots = points.length
     renderTimeline();
-    // Показываем первую точку
     updateRoutePoint();
-    // Обновляем ссылки для бронирования
     updateBookingLinks(tour);
-    // Запускаем автоплей
     startRouteAutoplay();
 }
 
-// Рисует линию прогресса и dots (одна точка = один элемент в points)
 function renderTimeline() {
     const container = document.getElementById('route-timeline');
     if (!container || !currentTour) return;
 
-    // Очищаем
     container.innerHTML = '<div class="timeline-line"></div>';
 
-    // Линия прогресса
     const progressLine = document.createElement('div');
     progressLine.className = 'timeline-progress';
     progressLine.id = 'timeline-progress';
     container.appendChild(progressLine);
 
     const pointsCount = currentTour.points.length;
-
-    // Создаём по одному dot на каждую точку маршрута
     currentTour.points.forEach((pt, index) => {
         const dot = document.createElement('div');
         dot.className = 'timeline-dot';
         dot.id = `dot-${index}`;
-
-        // Равномерно распределяем по горизонтали
-        const leftPerc = pointsCount > 1 ? (index / (pointsCount - 1)) * 100 : 50;
+        const leftPerc = pointsCount > 1 ? (index / (pointsCount - 1)) * 100 : 0;
         dot.style.position = 'absolute';
         dot.style.left = `${leftPerc}%`;
 
-        // Визуальный таймер-кольцо для автоплея
         const timerRing = document.createElement('div');
         timerRing.className = 'timeline-dot-timer';
         timerRing.id = `timer-${index}`;
         dot.appendChild(timerRing);
 
-        // Клик по точке переключает на неё
         dot.addEventListener('click', () => {
             currentRouteIndex = index;
             isAutoplayPaused = true;
@@ -112,7 +84,6 @@ function renderTimeline() {
         container.appendChild(dot);
     });
 
-    // Кнопки назад/вперёд
     const prev = document.getElementById('route-prev');
     const next = document.getElementById('route-next');
 
@@ -128,13 +99,11 @@ function renderTimeline() {
     };
 }
 
-// Обновляет контент Раздела 3 по текущей точке маршрута
 function updateRoutePoint() {
     if (!currentTour) return;
     const point = currentTour.points[currentRouteIndex];
     if (!point) return;
 
-    // --- Большая картинка (point.img) ---
     const mainImg = document.getElementById('route-main-image');
     if (mainImg) {
         mainImg.style.opacity = '0';
@@ -144,53 +113,40 @@ function updateRoutePoint() {
         }, 200);
     }
 
-    // --- Заголовок и описание точки (point.title, point.desc) ---
-    const titleEl = document.getElementById('route-point-title');
-    const descEl = document.getElementById('route-point-desc');
-    if (titleEl) titleEl.innerText = point.title;
-    if (descEl) descEl.innerText = point.desc;
+    const title = document.getElementById('route-point-title');
+    const desc = document.getElementById('route-point-desc');
+    if (title) title.innerText = point.title;
+    if (desc) desc.innerText = point.desc;
 
-    // --- Маленькая превью-картинка (point.thumb) ---
-    // Если point.thumb = null или пустая строка → блок скрыт
-    const thumbBlock = document.getElementById('route-thumbnail');
-    if (thumbBlock) {
-        if (point.thumb) {
-            const thumbImg = document.getElementById('route-thumb-img');
-            const thumbTitleEl = document.getElementById('route-thumb-title');
-            if (thumbImg) thumbImg.src = point.thumb;
-            if (thumbTitleEl) thumbTitleEl.innerText = point.thumbTitle || '';
-            thumbBlock.style.opacity = '1';
-            thumbBlock.style.pointerEvents = 'auto';
-        } else {
-            thumbBlock.style.opacity = '0';
-            thumbBlock.style.pointerEvents = 'none';
-        }
+    const thumb = document.getElementById('route-thumbnail');
+    if (thumb && point.thumb) {
+        const thumbImg = document.getElementById('route-thumb-img');
+        const thumbTitle = document.getElementById('route-thumb-title');
+        if (thumbImg) thumbImg.src = point.thumb;
+        if (thumbTitle) thumbTitle.innerText = point.thumbTitle;
+        thumb.style.opacity = '1';
+    } else if (thumb) {
+        thumb.style.opacity = '0';
     }
 
-    // --- Активная точка на тайм-лайне ---
     document.querySelectorAll('.timeline-dot').forEach((dot, i) => {
         dot.classList.toggle('active', i === currentRouteIndex);
     });
 
-    // --- Прогресс-линия ---
-    const progressEl = document.getElementById('timeline-progress');
-    if (progressEl) {
-        const width = currentTour.points.length > 1
-            ? (currentRouteIndex / (currentTour.points.length - 1)) * 100
-            : 0;
-        progressEl.style.width = `${width}%`;
+    const progress = document.getElementById('timeline-progress');
+    if (progress && currentTour.points.length > 1) {
+        const width = (currentRouteIndex / (currentTour.points.length - 1)) * 100;
+        progress.style.width = `${width}%`;
     }
 
-    // Сбрасываем таймер автоплея
     autoplayProgress = 0;
 }
 
 function updateBookingLinks(tour) {
     const whatsapp = document.getElementById('btn-whatsapp');
     const telegram = document.getElementById('btn-telegram');
-    const msg = `Բարև, ուզում եմ գրանցվել ${tour.title} տուրի համար`;
-    if (whatsapp) whatsapp.href = `https://wa.me/?text=${encodeURIComponent(msg)}`;
-    if (telegram) telegram.href = `https://t.me/share/url?url=&text=${encodeURIComponent(msg)}`;
+    if (whatsapp) whatsapp.href = `https://wa.me/?text=${encodeURIComponent(`Բարև, ուզում եմ գրանցվել ${tour.title} տուրի համար`)}`;
+    if (telegram) telegram.href = `https://t.me/share/url?url=&text=${encodeURIComponent(`Բարև, ուզում եմ գրանցվել ${tour.title} տուրի համար`)}`;
 }
 
 function initBookingButtons() {
@@ -204,9 +160,6 @@ function initBookingButtons() {
     });
 }
 
-// ==========================================
-// АВТОПЛЕЙ (60 FPS)
-// ==========================================
 function startRouteAutoplay() {
     stopRouteAutoplay();
     isAutoplayPaused = false;
@@ -226,9 +179,8 @@ function autoplayLoop(time) {
     if (isAutoplayPaused || !currentTour) return;
     const delta = time - lastFrameTime;
     lastFrameTime = time;
-    autoplayProgress += delta / 5000; // 5 секунд на каждую точку
+    autoplayProgress += delta / 5000;
 
-    // Анимация кольца на активном dot
     const activeTimer = document.getElementById(`timer-${currentRouteIndex}`);
     if (activeTimer) {
         activeTimer.style.transform = `scale(${1 + autoplayProgress * 0.5})`;

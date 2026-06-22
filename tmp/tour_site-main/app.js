@@ -197,7 +197,7 @@ function openTourDetails(tour) {
     currentTour = tour;
     currentRouteIndex = 0;
     
-    document.getElementById('details-tour-title').innerText =  tour.title;
+    document.getElementById('details-tour-title').innerText = tour.title;
     document.getElementById('tour-details').style.display = 'block';
     
     document.getElementById('tour-details').scrollIntoView({ behavior: 'smooth' });
